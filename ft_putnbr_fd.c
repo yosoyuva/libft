@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymehdi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/06 19:31:51 by ymehdi            #+#    #+#             */
-/*   Updated: 2019/04/07 12:22:45 by ymehdi           ###   ########.fr       */
+/*   Created: 2019/04/07 16:13:58 by ymehdi            #+#    #+#             */
+/*   Updated: 2019/04/07 16:20:28 by ymehdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *restrict s1, const char *restrict s2, size_t n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
-	size_t	j;
+	unsigned int	nbr;
 
-	j = 0;
-	while (s1[j] != '\0')
-		j++;
-	i = 0;
-	while (i < n && s2[i])
+	if (n < 0)
 	{
-		s1[j] = s2[i];
-		i++;
-		j++;
+		ft_putchar_fd('-', fd);
+		nbr = n * (-1);
 	}
-	s1[j] = '\0';
-	return (s1);
+	else
+		nbr = n;
+	if (nbr > 9)
+		ft_putnbr_fd(nbr / 10, fd);
+	ft_putchar_fd(nbr % 10 + 48, fd);
 }

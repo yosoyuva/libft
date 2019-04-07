@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymehdi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/06 19:31:51 by ymehdi            #+#    #+#             */
-/*   Updated: 2019/04/07 12:22:45 by ymehdi           ###   ########.fr       */
+/*   Created: 2019/04/07 18:34:47 by ymehdi            #+#    #+#             */
+/*   Updated: 2019/04/07 19:12:48 by ymehdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *restrict s1, const char *restrict s2, size_t n)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
-	size_t	j;
+	int		i;
 
-	j = 0;
-	while (s1[j] != '\0')
-		j++;
 	i = 0;
-	while (i < n && s2[i])
+	while (s[i])
 	{
-		s1[j] = s2[i];
+		if (s[i] == c)
+			return ((char *)&s[i]);
 		i++;
-		j++;
 	}
-	s1[j] = '\0';
-	return (s1);
+	if (c == 0)
+		return ((char *)&s[i]);
+	return (NULL);
 }

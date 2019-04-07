@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymehdi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/06 19:31:51 by ymehdi            #+#    #+#             */
-/*   Updated: 2019/04/07 12:22:45 by ymehdi           ###   ########.fr       */
+/*   Created: 2019/04/07 16:11:40 by ymehdi            #+#    #+#             */
+/*   Updated: 2019/04/07 16:20:24 by ymehdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *restrict s1, const char *restrict s2, size_t n)
+void	ft_putendl_fd(char const *s, int fd)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
 
-	j = 0;
-	while (s1[j] != '\0')
-		j++;
 	i = 0;
-	while (i < n && s2[i])
+	while (s[i] != '\0')
 	{
-		s1[j] = s2[i];
+		ft_putchar_fd(s[i], fd);
 		i++;
-		j++;
 	}
-	s1[j] = '\0';
-	return (s1);
+	ft_putchar_fd('\n', fd);
 }

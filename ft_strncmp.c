@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymehdi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/06 19:31:51 by ymehdi            #+#    #+#             */
-/*   Updated: 2019/04/07 12:22:45 by ymehdi           ###   ########.fr       */
+/*   Created: 2019/04/07 16:22:04 by ymehdi            #+#    #+#             */
+/*   Updated: 2019/04/07 16:46:30 by ymehdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *restrict s1, const char *restrict s2, size_t n)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	i;
-	size_t	j;
+	size_t i;
 
-	j = 0;
-	while (s1[j] != '\0')
-		j++;
 	i = 0;
-	while (i < n && s2[i])
+	if (n == 0)
+		return (0);
+	while (s1[i] == s2[i] && i < n - 1)
 	{
-		s1[j] = s2[i];
+		if (s1[i] == '\0')
+			return (0);
 		i++;
-		j++;
 	}
-	s1[j] = '\0';
-	return (s1);
+	if (s1[i] != s2[i])
+		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	else
+		return (0);
 }
