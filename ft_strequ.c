@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymehdi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/07 12:48:04 by ymehdi            #+#    #+#             */
-/*   Updated: 2019/04/10 12:57:35 by ymehdi           ###   ########.fr       */
+/*   Created: 2019/04/10 15:58:00 by ymehdi            #+#    #+#             */
+/*   Updated: 2019/04/10 16:05:44 by ymehdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *big, const char *little)
+int		ft_strequ(char const *s1, char const *s2)
 {
-	int		i;
-	int		j;
+	int	i;
 
 	i = 0;
-	j = 0;
-	if (!little[0])
-		return ((char *)&big[i]);
-	while (big[i])
+	if (!s1 || !s2)
+		return (0);
+	while (s1[i] == s2[i])
 	{
-		while ((big[i + j] == little[j]) && little[j])
-			j += 1;
-		if (!little[j])
-			return ((char *)&big[i]);
-		j = 0;
-		i += 1;
+		if (s1[i] == '\0')
+			return (1);
+		i++;
 	}
-	return (NULL);
+	return (0);
 }

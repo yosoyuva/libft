@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymehdi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/07 12:48:04 by ymehdi            #+#    #+#             */
-/*   Updated: 2019/04/10 12:57:35 by ymehdi           ###   ########.fr       */
+/*   Created: 2019/04/10 15:46:23 by ymehdi            #+#    #+#             */
+/*   Updated: 2019/04/10 15:57:24 by ymehdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *big, const char *little)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int		i;
-	int		j;
+	unsigned int		i;
+	char				*st;
+	int					l;
 
 	i = 0;
-	j = 0;
-	if (!little[0])
-		return ((char *)&big[i]);
-	while (big[i])
+	if (s)
 	{
-		while ((big[i + j] == little[j]) && little[j])
-			j += 1;
-		if (!little[j])
-			return ((char *)&big[i]);
-		j = 0;
-		i += 1;
+		l = ft_strlen(s);
+		if (!(st = (char *)malloc(sizeof(char) * (l + 1))))
+			return (NULL);
 	}
-	return (NULL);
+	if (s)
+	{
+		while (s[i])
+		{
+			st[i] = (*f)(i, s[i]);
+			i++;
+		}
+		st[i] = '\0';
+	}
+	return (st);
 }

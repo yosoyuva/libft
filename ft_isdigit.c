@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymehdi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/07 12:48:04 by ymehdi            #+#    #+#             */
-/*   Updated: 2019/04/10 12:57:35 by ymehdi           ###   ########.fr       */
+/*   Created: 2019/04/09 18:46:32 by ymehdi            #+#    #+#             */
+/*   Updated: 2019/04/09 18:57:12 by ymehdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *big, const char *little)
+int		ft_isdigit(int c)
 {
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	if (!little[0])
-		return ((char *)&big[i]);
-	while (big[i])
-	{
-		while ((big[i + j] == little[j]) && little[j])
-			j += 1;
-		if (!little[j])
-			return ((char *)&big[i]);
-		j = 0;
-		i += 1;
-	}
-	return (NULL);
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
 }

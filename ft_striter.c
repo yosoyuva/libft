@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymehdi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/07 12:48:04 by ymehdi            #+#    #+#             */
-/*   Updated: 2019/04/10 12:57:35 by ymehdi           ###   ########.fr       */
+/*   Created: 2019/04/10 14:58:30 by ymehdi            #+#    #+#             */
+/*   Updated: 2019/04/10 15:04:51 by ymehdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *big, const char *little)
+void	ft_striter(char *s, void (*f)(char *))
 {
-	int		i;
-	int		j;
+	int	i;
 
 	i = 0;
-	j = 0;
-	if (!little[0])
-		return ((char *)&big[i]);
-	while (big[i])
-	{
-		while ((big[i + j] == little[j]) && little[j])
-			j += 1;
-		if (!little[j])
-			return ((char *)&big[i]);
-		j = 0;
-		i += 1;
-	}
-	return (NULL);
+	if (s)
+		while (s[i])
+		{
+			(*f)(&s[i]);
+			i++;
+		}
 }

@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymehdi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/07 12:48:04 by ymehdi            #+#    #+#             */
-/*   Updated: 2019/04/10 12:57:35 by ymehdi           ###   ########.fr       */
+/*   Created: 2019/04/08 17:23:58 by ymehdi            #+#    #+#             */
+/*   Updated: 2019/04/10 12:11:26 by ymehdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *big, const char *little)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	int		i;
-	int		j;
+	size_t	i;
 
 	i = 0;
-	j = 0;
-	if (!little[0])
-		return ((char *)&big[i]);
-	while (big[i])
+	c = (unsigned char)c;
+	while (i < n)
 	{
-		while ((big[i + j] == little[j]) && little[j])
-			j += 1;
-		if (!little[j])
-			return ((char *)&big[i]);
-		j = 0;
-		i += 1;
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+		if (((unsigned char *)src)[i] == c)
+			return (((unsigned char *)dst) + i + 1);
+		i++;
 	}
 	return (NULL);
 }
