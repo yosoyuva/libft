@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymehdi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/10 16:09:46 by ymehdi            #+#    #+#             */
-/*   Updated: 2019/04/11 14:10:19 by ymehdi           ###   ########.fr       */
+/*   Created: 2019/04/11 14:26:17 by ymehdi            #+#    #+#             */
+/*   Updated: 2019/04/11 15:25:14 by ymehdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+int		ft_iswspace(char c)
 {
-	char			*str;
-	unsigned int	i;
+	if (c == ' ' || c == '\n' || c == '\t')
+		return (1);
+	return (0);
+}
 
-	i = 0;
+char	*ft_strtrim(char const *s)
+{
+	int		i;
+	int		j;
+	char	*str;
+
 	if (!s)
 		return (NULL);
-	if ((str = (char *)malloc(sizeof(char) * (len + 1))) == NULL)
+	i = 0;
+	j = 0;
+	while (s[i] && ft_iswspace(s[i]))
+		i += 1;
+	j = ft_strlen(&s[i]) - 1;
+	while (s[i] && ft_iswspace(s[j + i]))
+		j -= 1;
+	if (!(str = ft_strnew(j + 1)))
 		return (NULL);
-	while (i < len)
-	{
-		str[i] = s[i + start];
-		i++;
-	}
-	str[i] = '\0';
+	ft_strncpy(str, (s + i), (j + 1));
 	return (str);
 }

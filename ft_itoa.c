@@ -1,32 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymehdi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/10 16:09:46 by ymehdi            #+#    #+#             */
-/*   Updated: 2019/04/11 14:10:19 by ymehdi           ###   ########.fr       */
+/*   Created: 2019/04/11 20:10:27 by ymehdi            #+#    #+#             */
+/*   Updated: 2019/04/11 20:39:42 by ymehdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+int		ft_nlength(int n)
 {
-	char			*str;
-	unsigned int	i;
+	int	size;
 
-	i = 0;
-	if (!s)
-		return (NULL);
-	if ((str = (char *)malloc(sizeof(char) * (len + 1))) == NULL)
-		return (NULL);
-	while (i < len)
+	size = 0;
+	while (n)
 	{
-		str[i] = s[i + start];
-		i++;
+		n = n / 10;
+		size++;
 	}
-	str[i] = '\0';
-	return (str);
+	return (size);
+}
+
+char	*ft_itoa(int n)
+{
+	int		i;
+	char	*s;
+
+	if (!(s = (char *)malloc(sizeof(char) * (ft_nlength(n) + 2))))
+		return (NULL);
+	i = ft_nlength(n);
+	if (n < 0)
+		s[0] = '+';
+	s[i + 1] = '\0';
+	while (i > 0)
+	{
+		s[i] = n % 10 + 48;
+		n = n / 10;
+		i--;
+	}
+	return (s);
 }

@@ -6,7 +6,7 @@
 /*   By: ymehdi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:23:54 by ymehdi            #+#    #+#             */
-/*   Updated: 2019/04/09 19:56:20 by ymehdi           ###   ########.fr       */
+/*   Updated: 2019/04/11 14:11:12 by ymehdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	main(int argc, char **argv)
 {
 	argc = 0;
 	argv[0] = "0";
-	ft_putchar(argv[1][0]);
-	ft_putchar('\n');
-
+	//ft_putchar(argv[1][0]);
+	//ft_putchar('\n');
+	
 
 	//char str1[10] = "salut";
 	//char dst[10] = "salut";
