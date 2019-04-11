@@ -6,7 +6,7 @@
 /*   By: ymehdi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:23:54 by ymehdi            #+#    #+#             */
-/*   Updated: 2019/04/11 14:11:12 by ymehdi           ###   ########.fr       */
+/*   Updated: 2019/04/11 20:53:46 by ymehdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 {
 	argc = 0;
 	argv[0] = "0";
+	printf("%s", ft_itoa(atoi(argv[1])));
 	//ft_putchar(argv[1][0]);
 	//ft_putchar('\n');
 	
