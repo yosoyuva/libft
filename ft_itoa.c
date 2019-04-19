@@ -6,17 +6,21 @@
 /*   By: ymehdi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 20:10:27 by ymehdi            #+#    #+#             */
-/*   Updated: 2019/04/11 20:53:41 by ymehdi           ###   ########.fr       */
+/*   Updated: 2019/04/12 13:28:08 by ymehdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_nlength(int n)
+static int		ft_nlength(int n)
 {
 	int	size;
 
 	size = 0;
+	if (n < 0)
+		size++;
+	if (n == 0)
+		return (1);
 	while (n)
 	{
 		n = n / 10;
@@ -25,29 +29,31 @@ int		ft_nlength(int n)
 	return (size);
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
-	int		i;
-	char	*s;
+	int				i;
+	unsigned int	nb;
+	char			*s;
 
-	if (!(s = (char *)malloc(sizeof(char) * (ft_nlength(n) + 1))))
+	if (!(s = (char *)malloc(sizeof(char) * (ft_nlength(n)))))
 		return (NULL);
-	i = ft_nlength(n) + 1;
-	ft_putnbr(i);
+	i = ft_nlength(n);
+	s[i] = '\0';
 	if (n < 0)
 	{
 		s[0] = '-';
-		n = n * (-1);
+		nb = n * (-1);
 	}
 	else
-		s[0] = 0;
-	s[i + 1] = '\0';
-	i--;
-	while (i > 0)
+		while (--i >= 0)
+		{
+			s[i] = n % 10 + 48;
+			n = n / 10;
+		}
+	while (--i > 0)
 	{
-		s[i] = n % 10 + 48;
-		n = n / 10;
-		i--;
+		s[i] = nb % 10 + 48;
+		nb = nb / 10;
 	}
 	return (s);
 }

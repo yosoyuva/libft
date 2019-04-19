@@ -6,7 +6,7 @@
 /*   By: ymehdi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 14:10:33 by ymehdi            #+#    #+#             */
-/*   Updated: 2019/04/11 14:25:51 by ymehdi           ###   ########.fr       */
+/*   Updated: 2019/04/14 12:21:55 by ymehdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		l1;
 	int		l2;
 
-	if (!s1)
+	if (!s1 || !s2)
 		return (NULL);
 	l1 = ft_strlen(s1);
 	l2 = ft_strlen(s2);

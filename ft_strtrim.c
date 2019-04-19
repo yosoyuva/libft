@@ -6,20 +6,20 @@
 /*   By: ymehdi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 14:26:17 by ymehdi            #+#    #+#             */
-/*   Updated: 2019/04/11 15:25:14 by ymehdi           ###   ########.fr       */
+/*   Updated: 2019/04/12 13:27:47 by ymehdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_iswspace(char c)
+static int		ft_iswspace(char c)
 {
 	if (c == ' ' || c == '\n' || c == '\t')
 		return (1);
 	return (0);
 }
 
-char	*ft_strtrim(char const *s)
+char			*ft_strtrim(char const *s)
 {
 	int		i;
 	int		j;
